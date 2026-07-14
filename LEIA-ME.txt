@@ -1,0 +1,15 @@
+NUVILI MVP 1.4 — LAYOUT CORRIGIDO
+
+Correções:
+- Vivi permanece dentro do espaço reservado e não cobre as respostas.
+- Barra de rolagem interna removida da atividade.
+- Alternativas alinhadas.
+- Ícones do mapa centralizados em todos os quadrados.
+- JANELA recebeu um símbolo visível compatível com o Windows.
+- Macaco e demais desenhos ficam em uma linha própria e centralizada.
+
+Abra corretamente:
+1. Extraia o ZIP inteiro.
+2. Abra o index.html da pasta extraída.
+3. Não abra dentro do WinRAR.
+4. Se aparecer versão antiga, pressione Ctrl+F5.

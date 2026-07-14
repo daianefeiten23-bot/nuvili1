@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#8B5CF6" />
+  <title>Nuvili 1.3 — Vivi Expressiva</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" aria-live="polite">
+
+    <section id="home" class="screen official-screen" aria-label="Tela inicial da Nuvili">
+      <div class="official-stage home-stage">
+        <img src="assets/tela_inicial_oficial.jpg" alt="Tela inicial oficial da Nuvili" class="official-image" />
+        <button class="hotspot hotspot-sound" data-action="sound" aria-label="Som"></button>
+        <button class="hotspot hotspot-help" data-action="help" aria-label="Ajuda"></button>
+        <button class="hotspot hotspot-start" data-go="name" aria-label="Começar"></button>
+        <button class="hotspot hotspot-settings" data-action="settings" aria-label="Configurações"></button>
+        <button class="hotspot hotspot-parents" data-action="parents" aria-label="Área dos Pais"></button>
+      </div>
+    </section>
+
+    <section id="name" class="screen official-screen" aria-label="Boas-vindas ao Vale da Nuvili">
+      <div class="official-stage name-stage">
+        <img src="assets/tela_nome_oficial.jpg" alt="Nuvili dando boas-vindas" class="official-image" />
+        <input id="playerName" class="name-official-input" maxlength="20" placeholder="Digite seu nome" autocomplete="off" aria-label="Digite seu nome" />
+        <p id="nameError" class="name-official-error" hidden>Vamos escolher um nome primeiro?</p>
+        <button id="continueName" class="name-hotspot name-hotspot-continue" aria-label="Continuar"></button>
+        <button class="name-hotspot name-hotspot-back" data-go="home" aria-label="Voltar"></button>
+      </div>
+    </section>
+
+    <section id="vale" class="screen alphabet-map" aria-label="Mapa do Alfabeto">
+      <header class="topbar">
+        <button class="round-button" data-go="home" aria-label="Início">⌂</button>
+        <div class="player-card">
+          <div class="vivi-mini-anim" aria-hidden="true"><img src="assets/vivi_animada/surpresa.png"><img class="blink" src="assets/vivi_animada/surpresa_pisca.png"></div>
+          <div><small>Explorador(a)</small><strong id="welcomeName">Explorador</strong></div>
+        </div>
+        <div class="counter" title="Estrelas">⭐ <strong id="starsCount">0</strong></div>
+        <div class="counter" title="Luzes do Conhecimento">✨ <strong id="lightsCount">0</strong></div>
+        <button class="round-button" data-action="settings" aria-label="Configurações">⚙</button>
+      </header>
+
+      <div class="map-heading">
+        <div class="vivi-map-anim" aria-label="Vivi"><img src="assets/vivi_animada/surpresa.png"><img class="blink" src="assets/vivi_animada/surpresa_pisca.png"></div>
+        <div>
+          <small>Aventura do Alfabeto</small>
+          <h1>Trilha das Letras</h1>
+          <p id="mapMessage">Comece pela letra A e desbloqueie o caminho até a letra Z!</p>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+        <span id="progressLabel">0 de 26 letras</span>
+      </div>
+
+      <div id="alphabetPath" class="alphabet-path" aria-label="Fases de A até Z"></div>
+
+      <footer class="map-footer">
+        <button class="footer-button" data-action="reset-progress">↻ Reiniciar progresso</button>
+        <span>Complete cada letra para liberar a próxima.</span>
+      </footer>
+    </section>
+
+    <section id="letterIntro" class="screen panel-screen">
+      <div class="panel letter-intro-panel">
+        <button class="back-corner" data-go="vale" aria-label="Voltar ao mapa">←</button>
+        <div class="vivi-intro-anim" aria-label="Vivi expressiva"><img src="assets/vivi_animada/surpresa.png"><img class="blink" src="assets/vivi_animada/surpresa_pisca.png"></div>
+        <div id="bigLetter" class="big-letter">A</div>
+        <h1 id="letterTitle">Letra A</h1>
+        <p id="letterExample">A de Abelha 🐝</p>
+        <button id="startLetter" class="btn btn-yellow">Começar atividades</button>
+      </div>
+    </section>
+
+    <section id="activity" class="screen panel-screen activity-screen">
+      <div class="panel wide">
+        <div class="activity-header">
+          <button class="icon-btn" data-go="vale" aria-label="Voltar ao mapa">←</button>
+          <strong id="progressText">Atividade 1 de 3</strong>
+          <span id="currentLetterBadge" class="letter-badge">A</span>
+        </div>
+        <div class="vivi-expression-wrap">
+          <div id="activityVivi" class="vivi-character thinking" aria-label="Vivi pensando">
+            <img class="pose pose-think" src="assets/vivi_animada/pensando.png" alt="">
+            <img class="pose pose-think-blink" src="assets/vivi_animada/pensando_pisca.png" alt="">
+            <img class="pose pose-surprise" src="assets/vivi_animada/surpresa.png" alt="">
+            <img class="pose pose-surprise-blink" src="assets/vivi_animada/surpresa_pisca.png" alt="">
+            <span class="thought-bubble">?</span>
+          </div>
+          <div id="viviSpeech" class="vivi-speech">Pense com calma! 💜</div>
+        </div>
+        <h1 id="question">Encontre a letra A</h1>
+        <div id="answers" class="answers"></div>
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+        <button id="nextActivity" class="btn btn-green" hidden>Próxima ➜</button>
+      </div>
+    </section>
+
+    <section id="letterVictory" class="screen panel-screen victory">
+      <div class="panel">
+        <div class="confetti">🎉 ✨ ⭐ ✨ 🎉</div>
+        <div class="vivi-celebration" aria-label="Vivi comemorando e batendo as asas">
+          <img class="celebrate-body" src="assets/vivi_animada/comemora_1.png" alt="">
+          <img class="wing wing-left" src="assets/vivi_animada/asa_esquerda.png" alt="">
+          <img class="wing wing-right" src="assets/vivi_animada/asa_direita.png" alt="">
+        </div>
+        <h1 id="victoryTitle">Letra concluída!</h1>
+        <p id="victoryText">Você aprendeu a letra A.</p>
+        <p class="reward">+3 estrelas ⭐ &nbsp; +3 luzes ✨</p>
+        <button id="victoryContinue" class="btn btn-yellow">Voltar ao mapa</button>
+      </div>
+    </section>
+
+    <section id="finalVictory" class="screen panel-screen final-victory">
+      <div class="panel wide">
+        <div class="confetti big">🎊 ⭐ 🌈 🏆 🌈 ⭐ 🎊</div>
+        <div class="vivi-celebration" aria-label="Vivi comemorando e batendo as asas">
+          <img class="celebrate-body" src="assets/vivi_animada/comemora_1.png" alt="">
+          <img class="wing wing-left" src="assets/vivi_animada/asa_esquerda.png" alt="">
+          <img class="wing wing-right" src="assets/vivi_animada/asa_direita.png" alt="">
+        </div>
+        <h1>Você completou o alfabeto!</h1>
+        <p>Parabéns, <strong id="finalName">pequeno explorador</strong>! Você percorreu toda a trilha de A até Z.</p>
+        <div class="alphabet-celebration">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+        <p class="reward">🏆 Medalha: Mestre das Letras</p>
+        <button class="btn btn-yellow" data-go="vale">Ver mapa completo</button>
+      </div>
+    </section>
+
+    <dialog id="modal">
+      <div id="modalContent"></div>
+      <button id="closeModal" class="btn btn-purple">Fechar</button>
+    </dialog>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
